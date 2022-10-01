@@ -1,0 +1,103 @@
+.searchbar-container{
+    margin-top: auto;
+    padding-left: 26%;
+    padding-top: 5%;
+    display: flex;
+    position: absolute;
+    width:100%;
+}
+.searchbar{
+    width:50%;
+    position:relative;
+    padding: 10px;
+    border-radius: 5px;
+
+    border: 1px solid rgb(230, 230, 230);
+
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+.searchbar:focus{
+    outline: none;
+    border-color: #f2f3f4;
+}
+
+.search-icon
+{
+    width: 50%;
+    height: 50%;
+    color: #ccc;
+    display:flex;
+    padding: 25%;
+}
+.searchbar-box{
+   background-color: rgb(35, 166, 240);
+    width: 25px;
+    margin-left: -3%;
+   position: relative;
+   border-radius: 5px;
+   border-color:rgb(230, 230, 230);
+}
+.searchbar-box:hover{
+    background-color: rgb(35, 166, 240);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .searchbar-box{
+        background-color: rgb(35, 166, 240);
+         width: 40px;
+         margin-left: -3%;
+        position: relative;
+        border-radius: 5px;
+        border-color:rgb(230, 230, 230);
+     }
+     .search-icon
+    {
+        width: 50%;
+        height: 50%;
+        color: #ccc;
+        display:flex;
+        padding: 25%;
+    }
+}
+
+@media screen and (max-width: 1920px) {
+   
+    .searchbar-box{
+        background-color: rgb(35, 166, 240);
+         width: 3%;
+         margin-left: -3%;
+        position: relative;
+        border-radius: 5px;
+        border-color:rgb(230, 230, 230);
+     }
+     .search-icon
+    {
+        width: 50%;
+        height: 50%;
+        color: #ccc;
+        display:flex;
+        padding: 25%;
+    }
+}
+
+@media screen and (max-device-width: 415px)   {
+    .searchbar-box{
+        background-color: rgb(35, 166, 240);
+        width: 25px;
+        margin-left: -3%;
+        position: relative;
+        border-radius: 5px;
+        border-color:rgb(230, 230, 230);
+     }
+     .search-icon
+    {
+        width: 50%;
+        height: 50%;
+        color: #ccc;
+        display:flex;
+        padding: 25%;
+    }
+
+}
