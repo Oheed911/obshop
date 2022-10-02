@@ -3,19 +3,40 @@ import react from "react"
 
 import "./Card.css"
 import image1 from "../../assets/pic.jfif"
-const Card = ({ title, description, image, link,price }) => {
+import StarRatings from 'react-star-ratings';
+const Card = ({ title, description, image, link, price, seller, delivery, rating }) => {
     return (
         <>
             <div className="card">
-                <div className="card-image">
-                    <img src={image1} alt="card-image" />
+                <div className="leftSide">
+                    <div className="card-image">
+                        <img className="cardImage" src={image1} alt="card-image" />
+                    </div>
                 </div>
-                <div className="card-content">
-                    <h1 className="card-title">{title}</h1>
-                    <buton className="price">{price}</buton>
-                    <p className="card-description">{description}</p>
-                    <a href={link} className="card-link">Read More</a>
+                <div className="Right-Side">
+                        <div className="firstLayer">
+                            <p className="cardTitle">{title}</p>
+                            <button className="price">{price}</button>
+                        </div>
+                        <StarRatings
+                                rating={rating}
+                                starRatedColor="yellow"
+                                numberOfStars={6}
+                                starDimension="20px"
+                                name='rating'
+                                starSpacing="2px"
+                            />
+                        <p className="card-description">{description}</p>
+
+                        <p className="seller">{seller}</p>
+                        <p className="delivery">{delivery}</p>
+                 
+                    <div className="buy-button">
+                        <a href={link} ><button className="card-link">
+                            Buy</button></a>
+                    </div>
                 </div>
+
             </div>
         </>
     )

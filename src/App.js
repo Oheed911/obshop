@@ -2,11 +2,16 @@
 import './App.css';
 import Searchbar from "./components/Searchbar/Searchbar";
 import Card from "./components/Cards/Card"
-
+import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 function App() {
   return (
     <>
-      <Card title="Card Title" description="Card Description" image='' link="https://www.google.com" price="1000" />
+      
+      <MultiRangeSlider
+      min={0}
+      max={1000}
+      onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+    />
     </>
   
   );
