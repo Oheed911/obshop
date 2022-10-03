@@ -37,7 +37,7 @@ function App() {
         </div>
         <div className="card-placement">
           {data.map((data) => (
-            <Card title={data.title} price={data.price} description={data.description}/>
+            <Card title={data.title} price={data.price} description={data.description}  />
           ))}
         </div>
 
