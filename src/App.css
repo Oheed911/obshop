@@ -1,1 +1,23 @@
-
+/* card to the centre of page*/
+.App{
+    display: flex;
+    flex-direction: column;
+}
+.card-placement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.searchbar-placement{
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+.body-placement{
+    display: flex;
+    flex-direction: row;
+    column-gap: 5rem;
+    margin-top: 15rem;
+}

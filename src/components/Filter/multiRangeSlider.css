@@ -1,10 +1,24 @@
 .container {
-  height: 100vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2rem;
 }
-
+.filter{
+  margin: 2rem;
+  width:20rem;
+  height: 10rem;
+  box-shadow: 0 0 10px 0 rgba(190, 187, 187, 0.2);
+  border-radius: 5px;
+  border:1px solid rgb(219, 212, 212)
+}
+.Title{
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
+}
 .slider {
   position: relative;
   width: 200px;
@@ -30,13 +44,13 @@
 }
 
 .slider__range {
-  background-color: #9fe5e1;
+  background-color: #39e9e0;
   z-index: 2;
 }
 
 .slider__left-value,
 .slider__right-value {
-  color: #dee2e6;
+  color: #000000;
   font-size: 12px;
   margin-top: 20px;
 }
