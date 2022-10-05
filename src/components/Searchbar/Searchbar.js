@@ -6,13 +6,17 @@ import searchIcon from "../../assets/search-icon.svg"
 
 const Searchbar = () => {
     const [inputValue, setinputValue] = react.useState("")
+    //create state value with json type
+    const [searchResult, setSearchResult] = react.useState({})
+    console.log("herherhe",searchResult)
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //send input value to the backend
-        fetch("https://google-shop-scrap.herokuapp.com/google-shopping", {
-            method: 'post',
+        //make fetch await for the response
+         await fetch("https://google-shop-scrap.herokuapp.com/google-shopping", {
+            method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
@@ -23,16 +27,13 @@ const Searchbar = () => {
         })
         .then(response => {        
             if (response.ok) {
-                console.log(response.json());
+                //set response result to the state setSearchResult
+                setSearchResult(response.json())
               } else {
                  throw new Error('Something went wrong ...');
               }
         })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => console.log(error));
-        e.preventDefault()
+      
     }
 
 
