@@ -8,7 +8,6 @@ const Searchbar = () => {
     const [inputValue, setinputValue] = react.useState("")
     //create state value with json type
     const [searchResult, setSearchResult] = react.useState({})
-    console.log("herherhe",searchResult)
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
@@ -33,6 +32,8 @@ const Searchbar = () => {
                  throw new Error('Something went wrong ...');
               }
         })
+    console.log("herherhe",searchResult)
+
       
     }
 
