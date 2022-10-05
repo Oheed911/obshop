@@ -4,37 +4,37 @@ import react from "react"
 import "./Searchbar.css"
 import searchIcon from "../../assets/search-icon.svg"
 
-const Searchbar = () => {
+const Searchbar = (props) => {
     const [inputValue, setinputValue] = react.useState("")
     //create state value with json type
-    const [searchResult, setSearchResult] = react.useState({})
+    const [searchResult, setSearchResult] = react.useState([])
+    
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
     const handleSubmit = async (e) => {
         //send input value to the backend
         //make fetch await for the response
-         await fetch("https://google-shop-scrap.herokuapp.com/google-shopping", {
+         const data=await fetch("https://google-shop-scrap.herokuapp.com/google-shopping", {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json'
             },
+            
             body: JSON.stringify({
                 query: inputValue
             })
         })
-        .then(response => {        
-            if (response.ok) {
-                //set response result to the state setSearchResult
-                setSearchResult(response.json())
-              } else {
-                 throw new Error('Something went wrong ...');
-              }
-        })
-    console.log("herherhe",searchResult)
 
-      
+
+        let text=(await data.text())
+        console.log(text)
+        //set the state value with the response
+        setSearchResult(JSON.parse(text));
+        //console.log(searchResult);
+        props.parentCallback(searchResult);
+        
     }
 
 
