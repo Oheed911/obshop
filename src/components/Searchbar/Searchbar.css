@@ -4,16 +4,16 @@
     padding-top: 5%;
     display: flex;
     position: absolute;
-    width:100%;
+    height: auto;
+
 }
 .searchbar{
-    width:50%;
+    width:50vw;
+    transition: width 0.25s;
     position:relative;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
-
     border: 1px solid rgb(230, 230, 230);
-
     font-size: 16px;
     background-color: #f9f9f9;
 }
@@ -46,7 +46,7 @@
 @media screen and (max-width: 768px) {
     .searchbar-box{
         background-color: rgb(35, 166, 240);
-         width: 40px;
+         width: 50px;
          margin-left: -3%;
         position: relative;
         border-radius: 5px;
@@ -66,7 +66,7 @@
    
     .searchbar-box{
         background-color: rgb(35, 166, 240);
-         width: 3%;
+         width: 50px;
          margin-left: -3%;
         position: relative;
         border-radius: 5px;

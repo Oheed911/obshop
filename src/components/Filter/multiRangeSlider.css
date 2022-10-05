@@ -7,21 +7,21 @@
 }
 .filter{
   margin: 2rem;
-  width:20rem;
+  width:20vw;
   height: 10rem;
   box-shadow: 0 0 10px 0 rgba(190, 187, 187, 0.2);
   border-radius: 5px;
   border:1px solid rgb(219, 212, 212)
 }
 .Title{
-  font-size: 1.5rem;
+  font-size: 2vw;
   font-weight: 600;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2vw;
 }
 .slider {
   position: relative;
-  width: 200px;
+  width: 50vw;
 }
 
 .slider__track,
@@ -74,7 +74,7 @@
   pointer-events: none;
   position: absolute;
   height: 0;
-  width: 200px;
+  width: 18vw;
   outline: none;
 }
 

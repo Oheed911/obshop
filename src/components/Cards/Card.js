@@ -2,7 +2,6 @@
 import react from "react"
 
 import "./Card.css"
-import image1 from "../../assets/pic.jfif"
 import StarRatings from 'react-star-ratings';
 const Card = ({ title, description, image, link, price, seller, delivery, rating }) => {
     return (
@@ -10,13 +9,14 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
             <div className="card">
                 <div className="leftSide">
                     <div className="card-image">
-                        <img className="cardImage" src={image1} alt="card-image" />
+                        <img className="cardImage" src={image} alt="card-image" />
                     </div>
                 </div>
                 <div className="Right-Side">
                         <div className="firstLayer">
                             <p className="cardTitle">{title}</p>
                             <button className="price">{price}</button>
+
                         </div>
                         <StarRatings
                                 rating={rating}
@@ -32,6 +32,8 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
                         <p className="delivery">{delivery}</p>
                  
                     <div className="buy-button">
+                
+
                         <a href={link} ><button className="card-link">
                             Buy</button></a>
                     </div>

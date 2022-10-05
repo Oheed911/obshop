@@ -1,23 +1,24 @@
-/* card to the centre of page*/
 .App{
-    display: flex;
-    flex-direction: column;
+    width:100vw;
 }
-.card-placement{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-}
-.searchbar-placement{
-    justify-content: center;
-    align-items: center;
-    margin-top: 5rem;
+
+.header{
+    background-color: #fff;
+    width:100vw;
 }
 .body-placement{
-    display: flex;
+    margin-top:20vw;
+    display:flex;
+    justify-content: center;
     flex-direction: row;
-    column-gap: 5rem;
-    margin-top: 15rem;
+}
+.welcome-tag{
+    font-size: 3vw;
+    font-weight: 600;
+    margin-top:5vw;
+    padding:0;
+    /*align centre */
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
