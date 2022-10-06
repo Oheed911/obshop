@@ -12,7 +12,7 @@
     transition: width 0.25s;
     position:relative;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     border: 1px solid rgb(230, 230, 230);
     font-size: 16px;
     background-color: #f9f9f9;
@@ -29,13 +29,14 @@
     color: #ccc;
     display:flex;
     padding: 25%;
+  
 }
 .searchbar-box{
    background-color: rgb(35, 166, 240);
     width: 25px;
     margin-left: -3%;
    position: relative;
-   border-radius: 5px;
+   border-radius: 15px;
    border-color:rgb(230, 230, 230);
 }
 .searchbar-box:hover{
@@ -49,7 +50,7 @@
          width: 50px;
          margin-left: -3%;
         position: relative;
-        border-radius: 5px;
+        border-radius: 15px;
         border-color:rgb(230, 230, 230);
      }
      .search-icon
@@ -66,10 +67,10 @@
    
     .searchbar-box{
         background-color: rgb(35, 166, 240);
-         width: 50px;
+         width: 60px;
          margin-left: -3%;
         position: relative;
-        border-radius: 5px;
+        border-radius: 70px;
         border-color:rgb(230, 230, 230);
      }
      .search-icon
