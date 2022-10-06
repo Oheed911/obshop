@@ -86,10 +86,10 @@
 @media screen and (max-device-width: 415px)   {
     .searchbar-box{
         background-color: rgb(35, 166, 240);
-        width: 25px;
+        width: 70px;
         margin-left: -3%;
         position: relative;
-        border-radius: 5px;
+        border-radius: 70px;
         border-color:rgb(230, 230, 230);
      }
      .search-icon
