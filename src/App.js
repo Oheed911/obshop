@@ -8,7 +8,6 @@ import ColorFilter from './components/Filter/colorFilter';
 import { useState } from 'react';
 import LoadingSpinner from './components/Loadingspinner/LoadingSpinner';
 function App() {
-
   //useContext 
   const [data,setData] = useState([
     {
@@ -21,7 +20,9 @@ function App() {
       "delivery": "",
       "image": ""
     }])
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
+    const [min,setMin] = useState(0)
+    const [max,setMax] = useState(0)
   //get searchResp
   const handleCallback = (childData) =>{
     
@@ -30,7 +31,6 @@ function App() {
     //data=childData;
     //console.log("child data is dfalksdjfalk",data);
   }
-
   const handleloading = (childData) =>{
     setLoading(childData.isLoading);
   }
@@ -48,10 +48,6 @@ function App() {
       {loading?'':
         <div className="body-placement">
           <div className="filter-placement">
-<<<<<<< HEAD
-=======
-          {
->>>>>>> 4ca2db90971ee083a9954e9a182e66f177110c46
             <MultiRangeSlider
               min={0}
               max={1000}
@@ -63,14 +59,9 @@ function App() {
               
             />
           </div>
-        
           <div className="card-placement">
-<<<<<<< HEAD
             {
                 data.map((item) => {
-=======
-              {data.map((item) => {
->>>>>>> 4ca2db90971ee083a9954e9a182e66f177110c46
                 return <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} />
 
               })}
