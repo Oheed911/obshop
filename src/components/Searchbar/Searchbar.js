@@ -41,7 +41,11 @@ const Searchbar = (props) => {
         })
 
     }
-
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSubmit(e)
+        }
+    }
 
 
     //get price value from multiRangeSlider using context API
@@ -49,7 +53,7 @@ const Searchbar = (props) => {
     return (
         <>
             <div className="searchbar-container">
-                <input type="text" value={inputValue} onChange={handleInput} placeholder="Search" className="searchbar" />
+                <input type="text" value={inputValue} onChange={handleInput} placeholder="Search"  onKeyPress={handleKeyPress} className="searchbar" />
                 <div className="searchbar-box" onClick={handleSubmit}>
                     <img src={searchIcon} alt="search-icon" className="search-icon" />
                 </div>
