@@ -5,27 +5,29 @@ import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
 import ColorFilter from './components/Filter/colorFilter';
+import { useState } from 'react';
 function App() {
-  const data = [
+  //useContext 
+  const [data,setData] = useState([
     {
       "title": "",
       "link": "",
       "source": "",
       "price": "",
-      "rating": "",
+      "rating": 0,
       "reviews": "",
       "delivery": "",
       "image": ""
-    }]
+    }])
   //get searchResp
   const handleCallback = (childData) =>{
-    console.log(childData);
+    console.log("child data is dfalksdjfalk",childData);
+    //convert childData into json object
+    setData(childData); 
     //data=childData;
   }
   return (
     <>
-
-
       <div className="App">
         <div className="header-place">
           <Header />
@@ -46,7 +48,10 @@ function App() {
             <ColorFilter/>
           </div>
           <div className="card-placement">
-           
+          
+            {data.map((item) => {
+              <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating} />
+            })}
           </div>
 
         </div>

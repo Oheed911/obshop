@@ -27,14 +27,16 @@ const Searchbar = (props) => {
             })
         })
 
-
-        let text=(await data.text())
-        console.log(text)
         //set the state value with the response
-        setSearchResult(JSON.parse(text));
-        //console.log(searchResult);
+       
+        //console.log("search Result first time is",searchResult);
+        //wait until the state value is set
+        await new Promise(r => setTimeout(r, 1000));
+        setSearchResult(JSON.parse(await data.text()));
+        //send the state value to the parent component
+
+
         props.parentCallback(searchResult);
-        
     }
 
 
