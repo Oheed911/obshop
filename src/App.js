@@ -18,7 +18,7 @@ function App() {
       "rating": 0,
       "reviews": "",
       "delivery": "",
-      "image": ""
+      "image": "",
     }])
     const [loading,setLoading] = useState(true)
     const [min,setMin] = useState("")
@@ -66,7 +66,7 @@ function App() {
           <div className="card-placement">
             {
                 data.map((item) => {
-                return <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} />
+                return <Card title={item.title} description={item.source} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating!=null?parseFloat(item.rating):0.0}/>
 
               })}
           </div>
