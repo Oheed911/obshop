@@ -21,8 +21,8 @@ function App() {
       "image": ""
     }])
     const [loading,setLoading] = useState(true)
-    const [min,setMin] = useState(0)
-    const [max,setMax] = useState(0)
+    const [min,setMin] = useState("")
+    const [max,setMax] = useState("")
   //get searchResp
   const handleCallback = (childData) =>{
     
@@ -34,6 +34,8 @@ function App() {
   const handleloading = (childData) =>{
     setLoading(childData.isLoading);
   }
+  //Send min and max value to MultiRangeSlider
+
 
   return (
     <>
@@ -43,7 +45,8 @@ function App() {
         </div>
         <h1 className="welcome-tag">Welcome on obshop, the best price comparator</h1>
         <div className="searchbar-placement">
-          <Searchbar parentCallback = {handleCallback} parenttocallback={handleloading}/>
+          <Searchbar parentCallback = {handleCallback} parenttocallback={handleloading} 
+           min={min} max={max}/>
         </div>
       {loading?'':
         <div className="body-placement">
@@ -53,9 +56,10 @@ function App() {
               max={1000}
               //onchahnge send data to searchbar
               onChange={(value) => {
-                setMin(value[0])
-                setMax(value[1])
+                setMin(toString(value[0]))
+                setMax(toString(value[1]))
               }}
+          
               
             />
           </div>

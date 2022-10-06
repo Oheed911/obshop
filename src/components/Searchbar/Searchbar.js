@@ -10,12 +10,14 @@ const Searchbar = (props) => {
     //create state value with json type
     const [searchResult, setSearchResult] = react.useState([])
     const [isLoading, setIsLoading] = useState(false);
-    
+    console.log(props.min," max value ",props.max);
+
+  
+
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
     const handleSubmit = (e) => {
-
         e.preventDefault()
        // setIsLoading(true);
         //props.parenttocallback({isLoading})
@@ -28,7 +30,9 @@ const Searchbar = (props) => {
             },
             
             body: JSON.stringify({
-                query: inputValue
+                query: inputValue,
+                price_low: props.min,
+                price_high: props.max
             })
         })
         .then(response => response.json())
