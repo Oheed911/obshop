@@ -5,7 +5,7 @@ import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
 import ColorFilter from './components/Filter/colorFilter';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import LoadingSpinner from './components/Loadingspinner/LoadingSpinner';
 function App() {
   //useContext 
@@ -20,7 +20,7 @@ function App() {
       "delivery": "",
       "image": ""
     }])
-    const [loading,setLoading] = useState(false)
+    const [loading,setLoading] = useState(true)
   //get searchResp
   const handleCallback = (childData) =>{
     
@@ -30,9 +30,8 @@ function App() {
     //console.log("child data is dfalksdjfalk",data);
   }
   const handleloading = (childData) =>{
-    setLoading(childData)
+    setLoading(childData.isLoading);
   }
-
 
   return (
     <>
@@ -42,26 +41,25 @@ function App() {
         </div>
         <h1 className="welcome-tag">Welcome on obshop, the best price comparator</h1>
         <div className="searchbar-placement">
-          <Searchbar parentCallback = {handleCallback} parenttoCallback={handleloading}/>
+          <Searchbar parentCallback = {handleCallback} parenttocallback={handleloading}/>
         </div>
 
         <div className="body-placement">
-          
           <div className="filter-placement">
-          {!loading?'':
+
             <MultiRangeSlider
               min={0}
               max={1000}
               onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-            />}
+            />
+
           </div>
           <div className="card-placement">
-            {!loading?'':
+            {
               data.map((item) => {
                 return <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} />
 
-              })
-              }
+              })}
           </div>
 
         </div>

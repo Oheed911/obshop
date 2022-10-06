@@ -5,7 +5,6 @@ import "./Searchbar.css"
 import searchIcon from "../../assets/search-icon.svg"
 import { useCallback } from "react"
 import { useState } from "react"
-import LoadingSpinner from "../Loadingspinner/LoadingSpinner"
 const Searchbar = (props) => {
     const [inputValue, setinputValue] = react.useState("")
     //create state value with json type
@@ -19,8 +18,7 @@ const Searchbar = (props) => {
 
         e.preventDefault()
         setIsLoading(true);
-        props.parenttoCallback(isLoading)
-        //props.parentCallback({dd,isLoading})
+        props.parenttocallback({isLoading})
         //fetch the data from the api
         fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`,{
             method: 'POST',
@@ -38,10 +36,11 @@ const Searchbar = (props) => {
             setIsLoading(false);
             //set the state value with the data fetched
             setSearchResult(data)
+            console.log(data)
+            props.parenttocallback({isLoading})
             //send the data and isLoading status to the parent component using parentCallback
             //make json object of data and is loading
             props.parentCallback({data})
-            props.parenttoCallback(isLoading)
         })
 
     }
