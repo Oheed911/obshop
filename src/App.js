@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import ColorFilter from './components/Filter/colorFilter';
 import { useState } from 'react';
 function App() {
+
   //useContext 
   const [data,setData] = useState([
     {
@@ -27,6 +28,7 @@ function App() {
     //data=childData;
     console.log("child data is dfalksdjfalk",data);
   }
+    
   return (
     <>
       <div className="App">
@@ -48,6 +50,7 @@ function App() {
             />
             <ColorFilter/>
           </div>
+        
           <div className="card-placement">
             {data.map((item) => {
               return <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} />
