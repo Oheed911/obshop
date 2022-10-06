@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./Header.css";
-import logo from "../../assets/pic.jfif";
+import logo from "../../assets/Obshop.svg";
 
 const Header = () => {
     return (

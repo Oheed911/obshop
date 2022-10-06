@@ -1,5 +1,6 @@
 .App{
     width:100vw;
+   
 }
 
 .header{
@@ -11,6 +12,7 @@
     display:flex;
     justify-content: center;
     flex-direction: row;
+    
 }
 .welcome-tag{
     font-size: 3vw;

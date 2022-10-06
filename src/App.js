@@ -21,6 +21,8 @@ function App() {
       "image": ""
     }])
     const [loading,setLoading] = useState(true)
+    const [min,setMin] = useState(0)
+    const [max,setMax] = useState(0)
   //get searchResp
   const handleCallback = (childData) =>{
     
@@ -43,26 +45,30 @@ function App() {
         <div className="searchbar-placement">
           <Searchbar parentCallback = {handleCallback} parenttocallback={handleloading}/>
         </div>
-
+      {loading?'':
         <div className="body-placement">
           <div className="filter-placement">
-
             <MultiRangeSlider
               min={0}
               max={1000}
-              onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+              //onchahnge send data to searchbar
+              onChange={(value) => {
+                setMin(value[0])
+                setMax(value[1])
+              }}
+              
             />
-
           </div>
           <div className="card-placement">
             {
-              data.map((item) => {
+                data.map((item) => {
                 return <Card title={item.title} description={item.description} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} />
 
               })}
           </div>
 
         </div>
+      }
 
       </div>
     </>

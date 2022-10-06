@@ -17,8 +17,8 @@ const Searchbar = (props) => {
     const handleSubmit = (e) => {
 
         e.preventDefault()
-        setIsLoading(true);
-        props.parenttocallback({isLoading})
+       // setIsLoading(true);
+        //props.parenttocallback({isLoading})
         //fetch the data from the api
         fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`,{
             method: 'POST',
@@ -36,10 +36,7 @@ const Searchbar = (props) => {
             setIsLoading(false);
             //set the state value with the data fetched
             setSearchResult(data)
-            console.log(data)
             props.parenttocallback({isLoading})
-            //send the data and isLoading status to the parent component using parentCallback
-            //make json object of data and is loading
             props.parentCallback({data})
         })
 
