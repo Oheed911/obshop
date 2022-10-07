@@ -5,9 +5,8 @@ body {
   font-family: "Varela Round";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(246, 241, 241);
 
-  background: linear-gradient(90deg, rgb(0, 194, 203) 0%, rgb(105, 190, 118) 0%,rgb(221, 185, 28) 100%);
+  background: white;
 }
 
 

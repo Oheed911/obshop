@@ -58,16 +58,13 @@ function App() {
               onChange={(value) => {
                 setMin(toString(value[0]))
                 setMax(toString(value[1]))
-              }}
-          
-              
+              }}     
             />
           </div>
           <div className="card-placement">
             {
                 data.map((item) => {
                 return <Card title={item.title} description={item.source} image={item.image} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating!=null?parseFloat(item.rating):0.0}/>
-
               })}
           </div>
 
