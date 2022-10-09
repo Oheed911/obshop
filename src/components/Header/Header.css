@@ -1,10 +1,12 @@
 .header{
-    background: linear-gradient(90deg, rgb(0, 194, 203) 0%, rgb(105, 190, 118) 0%,rgb(221, 185, 28) 100%);
+    background: white;
     width:100vw;
 }
 .logo{
     width: 60px;
     object-fit: contain;
     margin-left: 20px;
-    transform: scale(1.5);
+    padding-top: 4px;
+    transform: scale(2.0);
+    cursor: pointer;
 }

@@ -10,7 +10,6 @@ const Searchbar = (props) => {
     //create state value with json type
     const [searchResult, setSearchResult] = react.useState([])
     const [isLoading, setIsLoading] = useState(false);
-    console.log(props.min," max value ",props.max);
 
   
 

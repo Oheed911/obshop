@@ -21,8 +21,8 @@ function App() {
       "image": "",
     }])
     const [loading,setLoading] = useState(true)
-    const [min,setMin] = useState("")
-    const [max,setMax] = useState("")
+    const [min,setMin] = useState(0)
+    const [max,setMax] = useState(0)
   //get searchResp
   const handleCallback = (childData) =>{
     
@@ -45,8 +45,11 @@ function App() {
         </div>
         <h1 className="welcome-tag">Welcome on obshop, the best price comparator</h1>
         <div className="searchbar-placement">
-          <Searchbar parentCallback = {handleCallback} parenttocallback={handleloading} 
-           min={min} max={max}/>
+          <Searchbar 
+            parentCallback = {handleCallback}
+            parenttocallback={handleloading} 
+            min={min}  max={max}
+          />
         </div>
       {loading?'':
         <div className="body-placement">
@@ -55,10 +58,14 @@ function App() {
               min={0}
               max={1000}
               //onchahnge send data to searchbar
-              onChange={(value) => {
-                setMin(toString(value[0]))
-                setMax(toString(value[1]))
-              }}     
+              onChange={({ min, max }) => {
+                  setMin(min)
+                  setMax(max)
+                  console.log(min)
+                  console.log(max)
+                }
+              }
+
             />
           </div>
           <div className="card-placement">
