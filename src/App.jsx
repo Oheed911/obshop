@@ -12,7 +12,7 @@ function App() {
   const [data, setData] = useState([
     {
       "title": "",
-      "link": "",
+      "product_link": "",
       "source": "",
       "price": "",
       "rating": 0,
@@ -111,8 +111,8 @@ function App() {
               {
                 data.map((item) => {
                   return (
-                    <a href={item.link} className="card__link">
-                      <Card title={item.title} description={item.source} image={item.image_url} link={item.link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating != null ? parseFloat(item.rating) : 0.0} />
+                    <a href={item.product_link} className="card__link">
+                      <Card title={item.title} description={item.source} image={item.image_url} link={item.product_link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating != null ? parseFloat(item.rating) : 0.0} />
                     </a>)
 
                 })}
