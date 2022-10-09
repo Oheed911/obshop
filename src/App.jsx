@@ -29,7 +29,6 @@ function App() {
 
     //convert childData into json object
     setData(childData.data);
-    console.log(childData.data);
     setunique([]);
     //data=childData;
     //console.log("child data is dfalksdjfalk",data);
@@ -64,8 +63,6 @@ function App() {
                 onChange={({ min, max }) => {
                   setMin(min)
                   setMax(max)
-                  console.log(min)
-                  console.log(max)
                 }
                 }
               />
