@@ -17,16 +17,18 @@ const Searchbar = (props) => {
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
-
-    const getIp = useCallback(async () => {
+    //get user's location country
+    const getIP = async () => {
         const response = await fetch('https://api.ipify.org?format=json');
         const data = await response.json();
         setIP(data.ip);
-    }, []);
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        getIp();
+        getIP();
+        console.log(props.source_list);
         fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`, {
             method: 'POST',
             headers: {
@@ -38,7 +40,8 @@ const Searchbar = (props) => {
                 query: inputValue,
                 price_low: props.min,
                 price_high: props.max,
-                ip: ip
+                ip: ip,
+                selected_source: props.source_list
             })
         })
             .then(response => response.json())
@@ -57,8 +60,8 @@ const Searchbar = (props) => {
         }
     }
     useEffect(() => {
-        getIp();
-    }, [ip]);
+        getIP();
+    }, []);
 
     //get price value from multiRangeSlider using context API
 
