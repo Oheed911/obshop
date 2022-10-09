@@ -42,7 +42,7 @@ reduce card image to fit into the card
 .firstLayer{
     display: flex;
     flex-direction: row;
-    column-gap: 6vw;
+    column-gap: 5vw;
     margin-top:1vw;
 }
 /*
