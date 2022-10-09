@@ -24,3 +24,7 @@
     justify-content: center;
     text-align: center;
 }
+.card__link{
+    text-decoration: none;
+    color: #000;
+}

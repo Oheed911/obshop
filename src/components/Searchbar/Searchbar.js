@@ -5,43 +5,50 @@ import "./Searchbar.css"
 import searchIcon from "../../assets/search-icon.svg"
 import { useCallback } from "react"
 import { useState } from "react"
+
 const Searchbar = (props) => {
     const [inputValue, setinputValue] = react.useState("")
     //create state value with json type
     const [searchResult, setSearchResult] = react.useState([])
     const [isLoading, setIsLoading] = useState(false);
+    const [ip, setIP] = useState('');
 
-  
 
     const handleInput = (e) => {
         setinputValue(e.target.value)
     }
-    const handleSubmit = (e) => {
+
+    const getIp = useCallback(async () => {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        setIP(data.ip);
+    }, []);
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-       // setIsLoading(true);
-        //props.parenttocallback({isLoading})
-        //fetch the data from the api
-        fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`,{
+        getIp();
+        fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, /',
                 'Content-Type': 'application/json'
             },
-            
+
             body: JSON.stringify({
                 query: inputValue,
                 price_low: props.min,
-                price_high: props.max
+                price_high: props.max,
+                ip: ip
             })
         })
-        .then(response => response.json())
-        .then(data => {
-            setIsLoading(false);
-            //set the state value with the data fetched
-            setSearchResult(data)
-            props.parenttocallback({isLoading})
-            props.parentCallback({data})
-        })
+            .then(response => response.json())
+            .then(data => {
+                setIsLoading(false);
+                //set the state value with the data fetched
+                setSearchResult(data)
+                props.parenttocallback({ isLoading })
+                props.parentCallback({ data })
+            })
 
     }
     const handleKeyPress = (e) => {
@@ -49,14 +56,16 @@ const Searchbar = (props) => {
             handleSubmit(e)
         }
     }
-
+    useEffect(() => {
+        getIp();
+    }, [ip]);
 
     //get price value from multiRangeSlider using context API
 
     return (
         <>
             <div className="searchbar-container">
-                <input type="text" value={inputValue} onChange={handleInput} placeholder="Search"  onKeyPress={handleKeyPress} className="searchbar" />
+                <input type="text" value={inputValue} onChange={handleInput} placeholder="Search" onKeyPress={handleKeyPress} className="searchbar" />
                 <div className="searchbar-box" onClick={handleSubmit}>
                     <img src={searchIcon} alt="search-icon" className="search-icon" />
                 </div>
