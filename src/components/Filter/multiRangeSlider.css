@@ -12,7 +12,7 @@
   box-shadow: 0 0 10px 0 rgba(190, 187, 187, 0.2);
   border-radius: 5px;
   border:1px solid rgb(219, 212, 212);
-  background-color:rgb(225, 234, 199);
+  background-color:#f9f8f5;
   margin-left:-5vw;
 }
 .Title{
@@ -46,7 +46,7 @@
 }
 
 .slider__range {
-  background-color: #39e9e0;
+  background-color: #23a6f0;
   z-index: 2;
 }
 

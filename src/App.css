@@ -28,3 +28,38 @@
     text-decoration: none;
     color: #000;
 }
+
+.provider-filter{
+    margin-left: -5vw;
+    width: 20vw;
+    min-width:20vw;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(190, 187, 187, 0.2);
+    border:1px solid rgb(215, 211, 211);
+    background-color:#f9f8f5;
+}
+.filter-placement{
+   display:flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+}
+.Supp-title{
+    font-size: 2vw;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2vw;
+    margin-left: 1vw;
+}
+.filter-checkbox{
+    margin-left: 1vw;
+    margin-top: 1vw;
+    text-align: left;
+    cursor: pointer;
+}
+.filter-label{
+
+    font-size: 1vw;
+    font-weight: 600;
+    text-align: left;
+}

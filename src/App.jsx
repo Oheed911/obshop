@@ -4,10 +4,9 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
-import ColorFilter from './components/Filter/colorFilter';
+
 import { useState } from 'react';
-import { Link } from "react-router-dom"
-import LoadingSpinner from './components/Loadingspinner/LoadingSpinner';
+
 function App() {
   //useContext 
   const [data, setData] = useState([
@@ -21,7 +20,7 @@ function App() {
       "delivery": "",
       "image_url": "",
     }])
-    const [unique,setunique]=useState([])
+  const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(0)
@@ -71,46 +70,46 @@ function App() {
                 }
               />
               <div className="provider-filter">
-                <h3>Supplier</h3>
+                <h3 className="Supp-title">Supplier</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
-                  {
-                    //map over the unique sources and create a checkbox for each
-                    [...new Set(data.map(item => item.source))].map((item,index)=>{
-                      return(
-                        //get on change event and send it to searchbar
+                    {
+                      //map over the unique sources and create a checkbox for each
+                      [...new Set(data.map(item => item.source))].map((item, index) => {
+                        return (
+                          //get on change event and send it to searchbar
 
-                        <div key={index}>
-                          <input type="checkbox" id={item} name={item} value={item} onChange={//set the state of the checkbox
-                            (e)=>{
-                              //get the value of the checkbox
-                              const value=e.target.value;
-                              //get the checked state of the checkbox
-                              const checked=e.target.checked;
-                              //if the checkbox is checked
-                              if(checked){
-                                //add the value to the array
-                                setunique([...unique,value])
+                          <div key={index}>
+                            <input className="filter-checkbox" type="checkbox" id={item} name={item} value={item} onChange={//set the state of the checkbox
+                              (e) => {
+                                //get the value of the checkbox
+                                const value = e.target.value;
+                                //get the checked state of the checkbox
+                                const checked = e.target.checked;
+                                //if the checkbox is checked
+                                if (checked) {
+                                  //add the value to the array
+                                  setunique([...unique, value])
+                                }
+                                //if the checkbox is unchecked
+                                else {
+                                  //remove the value from the array
+                                  setunique(unique.filter((item) => item !== value))
+                                }
                               }
-                              //if the checkbox is unchecked
-                              else{
-                                //remove the value from the array
-                                setunique(unique.filter((item)=>item!==value))
-                              }
-                            }
-                          }/>
-                          <label for={item}>{item}</label>
-                        </div>
+                            } />
+                            <label className="filter-label" for={item}>{item}</label>
+                          </div>
+                        )
+                      }
                       )
-                    }
-                    )
 
-                  }
+                    }
                   </div>
                 </div>
               </div>
-
             </div>
+
             <div className="card-placement">
               {
                 data.map((item) => {

@@ -5,7 +5,7 @@ import "./Searchbar.css"
 import searchIcon from "../../assets/search-icon.svg"
 import { useCallback } from "react"
 import { useState } from "react"
-
+import SyncLoader from "react-spinners/SyncLoader";
 const Searchbar = (props) => {
     const [inputValue, setinputValue] = react.useState("")
     //create state value with json type
@@ -29,6 +29,7 @@ const Searchbar = (props) => {
         e.preventDefault()
         getIP();
         console.log(props.source_list);
+        setIsLoading(true);
         fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`, {
             method: 'POST',
             headers: {
@@ -66,14 +67,22 @@ const Searchbar = (props) => {
     //get price value from multiRangeSlider using context API
 
     return (
-        <>
+        <div className="sl-container">
+
             <div className="searchbar-container">
                 <input type="text" value={inputValue} onChange={handleInput} placeholder="Search" onKeyPress={handleKeyPress} className="searchbar" />
+    
                 <div className="searchbar-box" onClick={handleSubmit}>
                     <img src={searchIcon} alt="search-icon" className="search-icon" />
                 </div>
+              
             </div>
-        </>
+            {isLoading &&<div className="load-search">
+            <SyncLoader color="#23a6f0" />
+                     </div>
+                     }
+       
+        </div>
 
     )
 }
