@@ -30,8 +30,6 @@ function App() {
     //convert childData into json object
     setData(childData.data);
     setunique([]);
-    //data=childData;
-    //console.log("child data is dfalksdjfalk",data);
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
@@ -100,7 +98,6 @@ function App() {
                         )
                       }
                       )
-
                     }
                   </div>
                 </div>

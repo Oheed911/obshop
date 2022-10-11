@@ -1,12 +1,12 @@
 .header{
-    background: #EDEADE;
+    background: #ffffff;
     width:100vw;
 }
 .logo{
     width: 60px;
     object-fit: contain;
-    margin-left: 20px;
-    padding-top: 4px;
-    transform: scale(2.0);
+    margin-left: 60px;
+    padding-top: 6px;
+    transform: scale(4.0);
     cursor: pointer;
 }

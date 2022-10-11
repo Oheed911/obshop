@@ -78,7 +78,7 @@ const Searchbar = (props) => {
               
             </div>
             {isLoading &&<div className="load-search">
-            <SyncLoader color="#23a6f0" />
+            <SyncLoader color="#fa4e46" />
                      </div>
                      }
        
