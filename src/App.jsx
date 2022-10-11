@@ -5,7 +5,7 @@ import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   //useContext 
@@ -20,20 +20,62 @@ function App() {
       "delivery": "",
       "image_url": "",
     }])
+
+
+    const [tempdata, settempData] = useState([
+      {
+        "title": "",
+        "product_link": "",
+        "source": "",
+        "price": "",
+        "rating": 0,
+        "reviews": "",
+        "delivery": "",
+        "image_url": "",
+      }])
   const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
   const [min, setMin] = useState(0)
-  const [max, setMax] = useState(0)
+  const [max, setMax] = useState(10000)
+  const [clicked, setClicked] = useState(false)
+  
   //get searchResp
   const handleCallback = (childData) => {
 
     //convert childData into json object
     setData(childData.data);
+    settempData(childData.data);
+    
     setunique([]);
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
   }
+  //filter the data after min or max is changed
+  const handleClicked = () => {
+    //filter data on basis of min and max
+    console.log("data is here",data);
+    console.log("min is",min);
+    console.log("max is",max);
+  
+    //select only that that data whole data.price lies between min and max statue value
+    let filteredData = tempdata.filter((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseInt(price);
+      //check if price is between min and max
+      if (price >= min && price <= max) {
+        return item;
+      }
+      
+    });
+    setData(filteredData);
+  }
+
+  
 
   //Send min and max value to MultiRangeSlider
   return (
@@ -60,11 +102,14 @@ function App() {
                 //onchahnge send data to searchbar
                 onChange={({ min, max }) => {
                   setMin(min)
+                  //setmax to maximum price in data
                   setMax(max)
+                  handleClicked()
                 }
                 }
               />
               <div className="provider-filter">
+                <hr/>
                 <h3 className="Supp-title">Supplier</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
@@ -77,16 +122,15 @@ function App() {
                           <div key={index}>
                             <input className="filter-checkbox" type="checkbox" id={item} name={item} value={item} onChange={//set the state of the checkbox
                               (e) => {
-                                //get the value of the checkbox
+                          
                                 const value = e.target.value;
-                                //get the checked state of the checkbox
+                               
                                 const checked = e.target.checked;
-                                //if the checkbox is checked
+                              
                                 if (checked) {
-                                  //add the value to the array
                                   setunique([...unique, value])
                                 }
-                                //if the checkbox is unchecked
+                          
                                 else {
                                   //remove the value from the array
                                   setunique(unique.filter((item) => item !== value))
@@ -98,8 +142,11 @@ function App() {
                         )
                       }
                       )
+                      
                     }
+                    
                   </div>
+                  <button className="btn-filter" > set Supplier</button>
                 </div>
               </div>
             </div>
@@ -108,7 +155,7 @@ function App() {
               {
                 data.map((item) => {
                   return (
-                    <a href={item.product_link} className="card__link">
+                    <a href={item.product_link} className="card__link"  target="_blank" rel="noopener noreferrer">
                       <Card title={item.title} description={item.source} image={item.image_url} link={item.product_link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating != null ? parseFloat(item.rating) : 0.0} />
                     </a>)
 
