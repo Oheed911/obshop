@@ -77,7 +77,10 @@ function App() {
       if (item.source === checkVal) {
         return item;
       }
+
+      //
     });
+    //Check if data is empty or not
 
     console.log(filteredData);
     setData(filteredData);
@@ -104,9 +107,11 @@ function App() {
             parenttocallback={handleloading}
             min={min} max={1000000}
             source_list={[]}
+
+
           />
         </div>
-        {loading ? '' :
+        {loading || data.length===0 ? '' :
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
