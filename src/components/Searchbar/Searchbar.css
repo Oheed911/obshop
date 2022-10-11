@@ -40,7 +40,7 @@
    border-color:rgb(230, 230, 230);
 }
 .searchbar-box:hover{
-    background-color: rgb(35, 166, 240);
+    background-color: #e70c00;
     cursor: pointer;
 }
 
