@@ -5,7 +5,7 @@ import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
 
-import { useEffect, useState } from 'react';
+import {useState} from 'react';
 
 function App() {
   //useContext 
@@ -54,10 +54,6 @@ function App() {
   //filter the data after min or max is changed
   const handleClicked = () => {
     //filter data on basis of min and max
-    console.log("data is here",data);
-    console.log("min is",min);
-    console.log("max is",max);
-  
     //select only that that data whole data.price lies between min and max statue value
     let filteredData = tempdata.filter((item) => {
       //remove curreny from price
@@ -74,6 +70,23 @@ function App() {
     });
     setData(filteredData);
   }
+  let handleCheckBox = (checkVal) => {
+    console.log(checkVal);
+    //remove all values from data except checkVal
+    let filteredData = tempdata.filter((item) => {
+      if (item.source === checkVal) {
+        return item;
+      }
+    });
+
+    console.log(filteredData);
+    setData(filteredData);
+    
+  }
+  let handleCheckBoxunclick = (checkVal) => {
+    setData(tempdata);
+  }
+
 
   
 
@@ -89,33 +102,47 @@ function App() {
           <Searchbar
             parentCallback={handleCallback}
             parenttocallback={handleloading}
-            min={min} max={max}
-            source_list={unique}
+            min={min} max={100000}
+            source_list={[]}
           />
         </div>
         {loading ? '' :
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
-                min={0}
-                max={10000}
+                min={
+                 0
+                
+                } 
+                max={
+                  Math.max(...data.map((item) => {
+                    //remove curreny from price
+                    let price = item.price.replace(/[^0-9]/g, '');
+                    //remove commas from price
+                    price = price.replace(/,/g, '');
+                    //convert price into integer
+                    price = parseFloat(price);
+                    return price;
+                  }))
+                }
                 //onchahnge send data to searchbar
                 onChange={({ min, max }) => {
                   setMin(min)
                   //setmax to maximum price in data
                   setMax(max)
-                  handleClicked()
+                 
                 }
                 }
               />
               <div className="provider-filter">
+                <button onClick={handleClicked}>Set Filter</button>
                 <hr/>
                 <h3 className="Supp-title">Supplier</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
                     {
                       //map over the unique sources and create a checkbox for each
-                      [...new Set(data.map(item => item.source))].map((item, index) => {
+                      [...new Set(tempdata.map(item => item.source))].map((item, index) => {
                         return (
                           //get on change event and send it to searchbar
 
@@ -128,16 +155,16 @@ function App() {
                                 const checked = e.target.checked;
                               
                                 if (checked) {
-                                  setunique([...unique, value])
+                                  console.log("herere")
+                                  handleCheckBox(value);
+                                  //setunique([...unique, value])
                                 }
-                          
-                                else {
-                                  //remove the value from the array
-                                  setunique(unique.filter((item) => item !== value))
+                                else {        
+                                handleCheckBoxunclick();
                                 }
                               }
                             } />
-                            <label className="filter-label" for={item}>{item}</label>
+                            <label className="filter-label" for={item}>{item} </label>
                           </div>
                         )
                       }
@@ -146,7 +173,6 @@ function App() {
                     }
                     
                   </div>
-                  <button className="btn-filter" > set Supplier</button>
                 </div>
               </div>
             </div>
