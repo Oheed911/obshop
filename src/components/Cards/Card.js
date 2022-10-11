@@ -8,9 +8,7 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
         <>
             <div className="card">
                 <div className="leftSide">
-                    <div className="card-image">
-                        <img className="cardImage" src={image} alt="card-image" />
-                    </div>
+                    <img className="cardImage" src={image} alt="card-image" />
                 </div>
                 <div className="Right-Side">
                         <div className="firstLayer">
@@ -20,7 +18,7 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
                         </div>
                         <StarRatings
                                 rating={rating}
-                                starRatedColor="yellow"
+                                starRatedColor="#192024"
                                 numberOfStars={6}
                                 starDimension="20px"
                                 name='rating'
