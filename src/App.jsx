@@ -35,8 +35,8 @@ function App() {
       }])
   const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
-  const [min, setMin] = useState(0)
-  const [max, setMax] = useState(10000)
+  const [min, setMin] = useState(0.0)
+  const [max, setMax] = useState(10000.0)
   const [clicked, setClicked] = useState(false)
   
   //get searchResp
@@ -50,6 +50,7 @@ function App() {
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
+    
   }
   //filter the data after min or max is changed
   const handleClicked = () => {
@@ -77,13 +78,22 @@ function App() {
       if (item.source === checkVal) {
         return item;
       }
-
       //
     });
     //Check if data is empty or not
-
-    console.log(filteredData);
     setData(filteredData);
+    console.log(filteredData);
+    let myprice=Math.max(...tempdata.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      
+      return price;
+    }))
+    setMax(myprice);
     
   }
   let handleCheckBoxunclick = (checkVal) => {
@@ -105,10 +115,8 @@ function App() {
           <Searchbar
             parentCallback={handleCallback}
             parenttocallback={handleloading}
-            min={min} max={1000000}
+            min={min} max={100000}
             source_list={[]}
-
-
           />
         </div>
         {loading || data.length===0 ? '' :
@@ -120,13 +128,14 @@ function App() {
                 
                 } 
                 max={
-                  Math.max(...data.map((item) => {
+                  Math.max(...tempdata.map((item) => {
                     //remove curreny from price
                     let price = item.price.replace(/[^0-9]/g, '');
                     //remove commas from price
                     price = price.replace(/,/g, '');
                     //convert price into integer
                     price = parseFloat(price);
+                    
                     return price;
                   }))
                 }
@@ -160,7 +169,6 @@ function App() {
                                 const checked = e.target.checked;
                               
                                 if (checked) {
-                                  console.log("herere")
                                   handleCheckBox(value);
                                   //setunique([...unique, value])
                                 }
