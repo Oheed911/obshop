@@ -1,121 +1,113 @@
-
-
-
-.card{
-    background-color: rgba(255, 255, 255, 0.686);
-    border-radius: 10px;
-    box-shadow: 0 1px 3px rgba(140, 138, 138, 0.12), 0 1px 2px rgba(106, 105, 105, 0.24);
-    column-gap: 1vw;
-    width:50vw;
-    margin: 1rem;
-
+.card {
+  background-color: rgba(255, 255, 255, 0.686);
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(140, 138, 138, 0.12),
+    0 1px 2px rgba(106, 105, 105, 0.24);
+  column-gap: 1vw;
+  width: 50vw;
+  height:40vw;
+  margin: 1rem;
 }
 
 /* 
 media query for desktops 
  */
 @media screen and (min-width: 1920px) {
-    .card{
-        height:15vw;
-    }
-    #col{
-        float: left;
-        width: 33%;
-        position:relative;
-    }
-    .price{
-        position:absolute;
-        top:10px;
-        right:10px
-    }
-    
+  .card {
+    height: 15vw;
+  }
+  #col {
+    float: left;
+    width: 33%;
+    position: relative;
+  }
+  .price {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }
 @media screen and (min-width: 720px) {
-        .card{
-            height:15vw;
-    }
-    #col{
-        float: left;
-        width: 33.33%;
-        height:15vw;
-        position:relative;
-    }
-    .price{
-        position:absolute;
-        top:10px;
-        right:10px
-    }
-    .buy-button{
-        position:absolute;
-        bottom:30px;
-        right: 10px;
-    }
-    .cardImage{
-        width: 15vw;
-        height: 15vw;
-        border-radius: 10px 0 0 10px;
-        object-fit: cover;
-        border-color: aliceblue;
-    }
-    
-}
-
-.card:hover{
-    box-shadow: 0 0 0 1px #899aa6;
-   
-}
-
-/* 
-reduce card image to fit into the card
-*/
-.cardImage{
+  .card {
+    height: 15vw;
+  }
+  #col {
+    float: left;
+    width: 33.33%;
+    height: 15vw;
+    position: relative;
+  }
+  .price {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .buy-button {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+  }
+  .cardImage {
     width: 15vw;
     height: 15vw;
     border-radius: 10px 0 0 10px;
     object-fit: cover;
     border-color: aliceblue;
-    
+  }
 }
 
-#col{
+.card:hover {
+  box-shadow: 0 0 0 1px #899aa6;
+}
+/* 
+reduce card image to fit into the card
+*/
+.cardImage {
+  width: 15vw;
+  height: 15vw;
+  border-radius: 10px 0 0 10px;
+  object-fit: cover;
+  border-color: aliceblue;
+}
+
+.card:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+#col {
     float: left;
     width: 33.33%;
     height:100%;
-    position:relative;
-}
-.card:after {
-    content: "";
-    display: table;
-    clear: both;
+    position: relative;
   }
-  .price{
-    position:absolute;
-    top:10px;
-    right:10px
+.price {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
-.buy-button{
-    position:absolute;
-    bottom:20px;
-    right: 10px;
+.buy-button {
+  position: absolute;
+  bottom: 30px;
+  right: 10px;
 }
-.card-link{
-    background: linear-gradient(90deg, #c95d57 0%, #e95b54 0%, #e70c00 100%);
-   border-radius: 5px;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border:1px solid #e70c00;
+.card-link {
+  background: linear-gradient(90deg, #c95d57 0%, #e95b54 0%, #e70c00 100%);
+  border-radius: 5px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 1px solid #e70c00;
 }
-.price{
-    font-size: 1.2rem;
-
-    color: white;
-    background-color: #40bb15;
-    border-radius: 5px;
-    border: 1px solid#40bb15;
+.price {
+  font-size: 1.2rem;
+  color: white;
+  background-color: #40bb15;
+  border-radius: 5px;
+  border: 1px solid#40bb15;
 }
