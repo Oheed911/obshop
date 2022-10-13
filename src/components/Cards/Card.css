@@ -99,8 +99,8 @@ reduce card image to fit into the card
     right: 10px;
 }
 .card-link{
-   background-color: #e70c00;
-   border-radius: 10px;
+    background: linear-gradient(90deg, #c95d57 0%, #e95b54 0%, #e70c00 100%);
+   border-radius: 5px;
     color: white;
     padding: 10px 20px;
     text-align: center;

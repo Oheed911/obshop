@@ -60,6 +60,18 @@
     font-size: 1vw;
     text-align: left;
 }
+.filter-btn{
+    margin-top: 1vw;
+    margin-left: 5vw;
+    width: 10vw;
+    height: 3vw;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #c95d57 0%, #e95b54 0%, #e70c00 100%);
+    color: #fff;
+    font-size: 1vw;
+    border: none;
+    cursor: pointer;
+}
 
 
 

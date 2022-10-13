@@ -13,9 +13,7 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
                 <div className="Right-Side" id ="col">
                         <div className="firstLayer">
                             <p className="cardTitle">{title}</p>
-                     
                         </div>
-                      
                         <StarRatings
                                 rating={rating}
                                 starRatedColor="#192024"

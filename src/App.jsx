@@ -140,7 +140,7 @@ function App() {
                 }
               />
               <div className="provider-filter">
-                <button onClick={handleClicked}>Set Filter</button>
+                <button className="filter-btn" onClick={handleClicked}>Set Filter</button>
                 <hr/>
                 <h3 className="Supp-title">Supplier</h3>
                 <div className="provider-filter-container">
