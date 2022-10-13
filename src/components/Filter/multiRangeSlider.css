@@ -7,11 +7,12 @@
 }
 .filter{
   margin: 2rem;
-  width:20vw;
+  width:18vw;
   height: 10rem;
   border-radius: 5px;
   background-color:#f0f3f5;
   margin-left:-5vw;
+  overflow:hidden;
 }
 .Title{
   font-size: 2vw;
@@ -21,7 +22,22 @@
 }
 .slider {
   position: relative;
-  width: 50vw;
+  width: 50vw;  
+  background-color: #f0f3f5;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+
+  
+}
+.slider:after { 
+  clear: both; 
+  display: table;
+  content: "";
+
 }
 
 .slider__track,
@@ -46,6 +62,7 @@
 .slider__range {
   background-color: #23a6f0;
   z-index: 2;
+  width: 100%;
 }
 
 .slider__left-value,
@@ -93,8 +110,8 @@
   border-radius: 50%;
   box-shadow: 0 0 1px 1px #ced4da;
   cursor: pointer;
-  height: 18px;
-  width: 18px;
+  height: 30px;
+  width: 30px;
   margin-top: 4px;
   pointer-events: all;
   position: relative;

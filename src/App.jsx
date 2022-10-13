@@ -36,8 +36,7 @@ function App() {
   const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
   const [min, setMin] = useState(0.0)
-  const [max, setMax] = useState(10000.0)
-  const [clicked, setClicked] = useState(false)
+  const [max, setMax] = useState(0)
   
   //get searchResp
   const handleCallback = (childData) => {
@@ -45,7 +44,6 @@ function App() {
     //convert childData into json object
     setData(childData.data);
     settempData(childData.data);
-    
     setunique([]);
   }
   const handleloading = (childData) => {
@@ -115,7 +113,7 @@ function App() {
           <Searchbar
             parentCallback={handleCallback}
             parenttocallback={handleloading}
-            min={min} max={100000}
+            min={min} max={max}
             source_list={[]}
           />
         </div>
@@ -123,10 +121,7 @@ function App() {
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
-                min={
-                 0
-                
-                } 
+                min={0} 
                 max={
                   Math.max(...tempdata.map((item) => {
                     //remove curreny from price
