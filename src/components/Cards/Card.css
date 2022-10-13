@@ -8,11 +8,9 @@
     column-gap: 1vw;
     width:50vw;
     margin: 1rem;
-    display: flex;
-    flex-direction: row;
 
-    position: inherit;
 }
+
 /* 
 media query for desktops 
  */
@@ -20,11 +18,46 @@ media query for desktops
     .card{
         height:15vw;
     }
+    #col{
+        float: left;
+        width: 33%;
+        position:relative;
+    }
+    .price{
+        position:absolute;
+        top:10px;
+        right:10px
+    }
+    
 }
 @media screen and (min-width: 720px) {
         .card{
             height:15vw;
     }
+    #col{
+        float: left;
+        width: 33.33%;
+        height:15vw;
+        position:relative;
+    }
+    .price{
+        position:absolute;
+        top:10px;
+        right:10px
+    }
+    .buy-button{
+        position:absolute;
+        bottom:30px;
+        right: 10px;
+    }
+    .cardImage{
+        width: 15vw;
+        height: 15vw;
+        border-radius: 10px 0 0 10px;
+        object-fit: cover;
+        border-color: aliceblue;
+    }
+    
 }
 
 .card:hover{
@@ -41,66 +74,48 @@ reduce card image to fit into the card
     border-radius: 10px 0 0 10px;
     object-fit: cover;
     border-color: aliceblue;
+    
 }
 
-.cardTitle{
-    font-size: 1vw;
-    font-weight: 600;
-    margin:0;
-    padding:0;
+#col{
+    float: left;
+    width: 33.33%;
+    height:100%;
+    position:relative;
 }
-
-.cardDescription{
-    font-size: 1vw;
-    font-weight: 400;
-    word-wrap: break-word;
-}
-.firstLayer{
-    display: flex;
-    flex-direction: row;
-    column-gap: auto;
-    margin-top:1vw;
-}
-/*
-design the button
-*/
-
-.price{
-    background-color:#40bb15;
-    border-color:  #40bb15;
-    border-style:solid;
-    border-radius: 5px;
-    height: 2rem;
-    width:6vw;
-    font-size: 1vw;
-    font-weight: 600;
-    color: #fff;
-    text-align: center;
-}
-.card-link{
-    background-color: #23a6f0;
-    border-radius: 5px;
-    color:#fff;
-    font-size: 1vw;
-    font-weight: 600;
-    height: 2rem;
-    width: 5vw;
-    border-style: solid;
-    border-color: #23a6f0;
-    cursor: pointer;
+.card:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .price{
+    position:absolute;
+    top:10px;
+    right:10px
 }
 .buy-button{
-    display: flex;
-    justify-content: flex-end;
-    margin-top:-2vw;
-    margin-bottom:1vw;
-    
+    position:absolute;
+    bottom:20px;
+    right: 10px;
 }
-.Right-Side{
-    margin:0px;
-    padding:0px;
-    display: flex;
-    flex-direction: column;
-    column-gap: 1vw;
-    
+.card-link{
+   background-color: #e70c00;
+   border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border:1px solid #e70c00;
+}
+.price{
+    font-size: 1.2rem;
+
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    border: 1px solid green;
 }

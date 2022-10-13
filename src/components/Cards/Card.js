@@ -7,15 +7,15 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
     return (
         <>
             <div className="card">
-                <div className="leftSide">
+                <div className="leftSide" id ="col">
                     <img className="cardImage" src={image} alt="card-image" />
                 </div>
-                <div className="Right-Side">
+                <div className="Right-Side" id ="col">
                         <div className="firstLayer">
                             <p className="cardTitle">{title}</p>
-                            <button className="price">{price}</button>
-
+                     
                         </div>
+                      
                         <StarRatings
                                 rating={rating}
                                 starRatedColor="#192024"
@@ -24,18 +24,22 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
                                 name='rating'
                                 starSpacing="2px"
                             />
+                       
                         <p className="card-description">{description}</p>
-
                         <p className="seller">{seller}</p>
                         <p className="delivery">{delivery}</p>
-                 
+                       
+                   
+                </div>
+               
+                <div className="Right-most-side" id ="col">
+                    <button className="price">{price}</button>
                     <div className="buy-button">
-                
-
                         <a href={link} ><button className="card-link">
                             Buy</button></a>
                     </div>
                 </div>
+              
 
             </div>
         </>
