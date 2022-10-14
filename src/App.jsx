@@ -226,7 +226,6 @@ function App() {
                                       return item;
                                     }
                                   })
-                                  console.log("after",supplierFilter);
                                   setsupplierFilter(supplierFilter);
                                   handleCheckBoxunclick();
                                 }
