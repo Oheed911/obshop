@@ -18,6 +18,13 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   useEffect(() => {
     setMinVal(min);
     setMaxVal(max);
+    //update the range with current min max
+    minValRef.current = min;
+    maxValRef.current = max;
+    
+    range.current.style.left = `${getPercent(min)}%`;
+    range.current.style.width = `${getPercent(max) - getPercent(min)}%`;
+
   }, [min, max]);
   //send minVal and maxVal to the Search bar component using useContext hook
   useEffect(() => {
@@ -34,7 +41,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
       range.current.style.left = `${minPercent}%`;
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [minVal, getPercent,min]);
+  }, [minVal, getPercent]);
 
   // Set width of the range to decrease from the right side
   useEffect(() => {
@@ -44,7 +51,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     if (range.current) {
       range.current.style.width = `${maxPercent - minPercent}%`;
     }
-  }, [maxVal, getPercent,max]);
+  }, [maxVal, getPercent]);
 
   // Get min and max values when their state changes
   useEffect(() => {

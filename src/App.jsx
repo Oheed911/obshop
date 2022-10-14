@@ -201,7 +201,6 @@ function App() {
                       [...new Set(tempdata.map(item => item.source))].map((item, index) => {
                         return (
                           //get on change event and send it to searchbar
-
                           <div key={index}>
                             <input className="filter-checkbox" type="checkbox" id={item} name={item} value={item} onChange={//set the state of the checkbox
                               (e) => {
