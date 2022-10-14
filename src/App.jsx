@@ -117,11 +117,19 @@ function App() {
             source_list={[]}
           />
         </div>
-        {loading || data.length===0 ? '' :
+        {loading || data.length===0 ? ''  :
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
-                min={0} 
+                min={Math.min(...data.map((item) => {
+                  //remove curreny from price
+                  let price = item.price.replace(/[^0-9]/g, '');
+                  //remove commas from price
+                  price = price.replace(/,/g, '');
+                  //convert price into integer
+                  price = parseFloat(price);
+                  return price;
+                }) )}
                 max={
                   Math.max(...tempdata.map((item) => {
                     //remove curreny from price
