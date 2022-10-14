@@ -113,7 +113,7 @@ function App() {
           <Searchbar
             parentCallback={handleCallback}
             parenttocallback={handleloading}
-            min={min} max={max}
+            min={0} max={100000}
             source_list={[]}
           />
         </div>
