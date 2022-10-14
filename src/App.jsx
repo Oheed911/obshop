@@ -44,28 +44,6 @@ function App() {
     //convert childData into json object
     setData(childData.data);
     settempData(childData.data);
-    let maxval= Math.max(...tempdata.map((item) => {
-      //remove curreny from price
-      let price = item.price.replace(/[^0-9]/g, '');
-      //remove commas from price
-      price = price.replace(/,/g, '');
-      //convert price into integer
-      price = parseFloat(price);
-      return price;
-    }))
-    setMax(maxval);
-
-    let minVal= Math.min(...tempdata.map((item) => {
-      //remove curreny from price
-      let price = item.price.replace(/[^0-9]/g, '');
-      //remove commas from price
-      price = price.replace(/,/g, '');
-      //convert price into integer
-      price = parseFloat(price);
-      return price;
-    }))   
-    setMin(minVal);
-
     setunique([]);
     
   }
