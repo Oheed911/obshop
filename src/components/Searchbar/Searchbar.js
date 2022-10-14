@@ -28,7 +28,6 @@ const Searchbar = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         getIP();
-        console.log(props.source_list);
         setIsLoading(true);
         fetch(`https://google-shop-scrap.herokuapp.com/google-shopping`, {
             method: 'POST',

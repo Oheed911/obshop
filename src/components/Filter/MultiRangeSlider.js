@@ -14,8 +14,15 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     (value) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
   );
+  //update minVal and maxVal whenever min and max value changes
+  useEffect(() => {
+    setMinVal(min);
+    setMaxVal(max);
+  }, [min, max]);
   //send minVal and maxVal to the Search bar component using useContext hook
-
+  useEffect(() => {
+    onChange({ minVal:min, maxVal:max });
+  }, [min,max]);
 
 
   // Set width of the range to decrease from the left side

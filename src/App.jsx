@@ -5,7 +5,7 @@ import Card from "./components/Cards/Card"
 import MultiRangeSlider from "./components/Filter/MultiRangeSlider";
 import Header from './components/Header/Header';
 
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   //useContext 
@@ -22,35 +22,61 @@ function App() {
     }])
 
 
-    const [tempdata, settempData] = useState([
-      {
-        "title": "",
-        "product_link": "",
-        "source": "",
-        "price": "",
-        "rating": 0,
-        "reviews": "",
-        "delivery": "",
-        "image_url": "",
-      }])
+  const [tempdata, settempData] = useState([
+    {
+      "title": "",
+      "product_link": "",
+      "source": "",
+      "price": "",
+      "rating": 0,
+      "reviews": "",
+      "delivery": "",
+      "image_url": "",
+    }])
   const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(0)
-  
+  const [tempmin, settempMin] = useState(0)
+  const [tempmax, settempMax] = useState(0)
   //get searchResp
   const handleCallback = (childData) => {
 
     //convert childData into json object
     setData(childData.data);
     settempData(childData.data);
+    //find minmim value from data
+    let minu = Math.min(...childData.data.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }))
+    let maxu = Math.max(...childData.data.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }))
+    settempMin(minu);
+    settempMax(maxu);
     setunique([]);
-    
+
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
-    
+
   }
+  useEffect(() => {
+    setMin(tempmin);
+    setMax(tempmax);
+  }, [tempmin, tempmax])
 
 
   const handleClicked = () => {
@@ -67,11 +93,11 @@ function App() {
       if (price >= min && price <= max) {
         return item;
       }
-      
+
     });
     setData(filteredData);
-     //setting the minimum price
-     let minimum=Math.min(...data.map((item) => {
+    //setting the minimum price
+    let minimum = Math.min(...data.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
@@ -79,24 +105,21 @@ function App() {
       //convert price into integer
       price = parseFloat(price);
       return price;
-    }) )
+    }))
     setMin(minimum);
-
-    console.log(filteredData);
-    let myprice=Math.max(...tempdata.map((item) => {
+    let myprice = Math.max(...tempdata.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
       price = price.replace(/,/g, '');
       //convert price into integer
       price = parseFloat(price);
-      
+
       return price;
     }))
     setMax(myprice);
   }
   let handleCheckBox = (checkVal) => {
-    console.log(checkVal);
     //remove all values from data except checkVal
     let filteredData = tempdata.filter((item) => {
       if (item.source === checkVal) {
@@ -106,21 +129,20 @@ function App() {
     });
     //Check if data is empty or not
     setData(filteredData);
-    console.log(filteredData);
-    let myprice=Math.max(...tempdata.map((item) => {
+    let myprice = Math.max(...tempdata.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
       price = price.replace(/,/g, '');
       //convert price into integer
       price = parseFloat(price);
-      
+
       return price;
     }))
     setMax(myprice);
 
     //setting the minimum price
-    let min=Math.min(...tempdata.map((item) => {
+    let min = Math.min(...tempdata.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
@@ -130,14 +152,14 @@ function App() {
       return price;
     }))
     setMin(min);
-    
+
   }
   let handleCheckBoxunclick = (checkVal) => {
     setData(tempdata);
   }
 
 
-  
+
 
   //Send min and max value to MultiRangeSlider
   return (
@@ -155,44 +177,28 @@ function App() {
             source_list={[]}
           />
         </div>
-        {loading || data.length===0 ? ''  :
+        {loading || data.length === 0 ? '' :
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
-                min={//find min price from tempdata and setMin to that and also return value
-                  Math.min(...tempdata.map((item) => {
-                    //remove curreny from price
-                    let price = item.price.replace(/[^0-9]/g, '');
-                    //remove commas from price
-                    price = price.replace(/,/g, '');
-                    //convert price into integer
-                    price = parseFloat(price);
-                    return price;
-                  }))   
-              }
+                min={
+                  tempmin
+                }
                 max={
-                  Math.max(...tempdata.map((item) => {
-                    //remove curreny from price
-                    let price = item.price.replace(/[^0-9]/g, '');
-                    //remove commas from price
-                    price = price.replace(/,/g, '');
-                    //convert price into integer
-                    price = parseFloat(price);
-                    return price;
-                  }))
+                  tempmax
                 }
                 //onchahnge send data to searchbar
                 onChange={({ min, max }) => {
                   setMin(min)
                   //setmax to maximum price in data
                   setMax(max)
-                 
+
                 }
                 }
               />
               <div className="provider-filter">
                 <button className="filter-btn" onClick={handleClicked}>Set Filter</button>
-                <hr/>
+                <hr />
                 <h3 className="Supp-title">Supplier</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
@@ -205,17 +211,17 @@ function App() {
                           <div key={index}>
                             <input className="filter-checkbox" type="checkbox" id={item} name={item} value={item} onChange={//set the state of the checkbox
                               (e) => {
-                          
+
                                 const value = e.target.value;
-                               
+
                                 const checked = e.target.checked;
-                              
+
                                 if (checked) {
                                   handleCheckBox(value);
                                   //setunique([...unique, value])
                                 }
-                                else {        
-                                handleCheckBoxunclick();
+                                else {
+                                  handleCheckBoxunclick();
                                 }
                               }
                             } />
@@ -224,9 +230,9 @@ function App() {
                         )
                       }
                       )
-                      
+
                     }
-                    
+
                   </div>
                 </div>
               </div>
@@ -236,7 +242,7 @@ function App() {
               {
                 data.map((item) => {
                   return (
-                    <a href={item.product_link} className="card__link"  target="_blank" rel="noopener noreferrer">
+                    <a href={item.product_link} className="card__link" target="_blank" rel="noopener noreferrer">
                       <Card title={item.title} description={item.source} image={item.image_url} link={item.product_link} price={item.price} seller={item.seller} delivery={item.delivery} rating={item.rating != null ? parseFloat(item.rating) : 0.0} />
                     </a>)
 
