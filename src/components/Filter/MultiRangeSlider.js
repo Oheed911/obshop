@@ -60,7 +60,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
   return (
     <div className="filter">
-      <p className="Title">prix</p>
+      <p className="Title">filtre prix</p>
       <div className="container">
         <input
           type="range"

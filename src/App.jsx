@@ -193,7 +193,7 @@ function App() {
               <div className="provider-filter">
                 <button className="filter-btn" onClick={handleClicked}>appliquer</button>
                 <hr />
-                <h3 className="Supp-title">marchant</h3>
+                <h3 className="Supp-title">filtre marchand</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
                     {
