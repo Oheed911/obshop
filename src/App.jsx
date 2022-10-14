@@ -35,7 +35,7 @@ function App() {
       }])
   const [unique, setunique] = useState([])
   const [loading, setLoading] = useState(true)
-  const [min, setMin] = useState(0.0)
+  const [min, setMin] = useState(0)
   const [max, setMax] = useState(0)
   
   //get searchResp
@@ -71,7 +71,7 @@ function App() {
     });
     setData(filteredData);
      //setting the minimum price
-     let min=Math.min(...data.map((item) => {
+     let minimum=Math.min(...data.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
@@ -80,7 +80,7 @@ function App() {
       price = parseFloat(price);
       return price;
     }) )
-    setMin(min);
+    setMin(minimum);
 
     console.log(filteredData);
     let myprice=Math.max(...tempdata.map((item) => {
