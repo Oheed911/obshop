@@ -36,7 +36,6 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
 
     if (range.current) {
       range.current.style.width = `${maxPercent - minPercent}%`;
-      console.log("current range",range.current)
     }
   }, [maxVal, getPercent]);
 
