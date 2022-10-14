@@ -33,20 +33,20 @@
   
 }
 .searchbar-box{
-   background-color: #fa4e46;
+   background-color: #1c8e75;
     width: 62px;
    position: relative;
    border-radius: 10px;
    border-color:rgb(230, 230, 230);
 }
 .searchbar-box:hover{
-    background-color: #e70c00;
+    background-color: #1c8e75;
     cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
     .searchbar-box{
-        background-color: #fa4e46;
+        background-color: #1c8e75;
          width: 62px;
          
         position: relative;
@@ -71,7 +71,7 @@
 @media screen and (max-width: 1920px) {
    
     .searchbar-box{
-        background-color: #fa4e46;
+        background-color: #1c8e75;
          width: 62px;
          margin-left:1%;
         position: relative;
@@ -96,7 +96,7 @@
 
 @media screen and (max-device-width: 415px)   {
     .searchbar-box{
-        background-color: #fa4e46;
+        background-color: #1c8e75;
         width: 62px;
         position: relative;
         border-radius: 10px;

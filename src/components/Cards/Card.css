@@ -92,7 +92,7 @@ reduce card image to fit into the card
   right: 10px;
 }
 .card-link {
-  background: linear-gradient(90deg, #c95d57 0%, #e95b54 0%, #e70c00 100%);
+  background: linear-gradient(90deg, #65a182 0%, #4f997e 0%, #2c8e79 100%);
   border-radius: 5px;
   color: white;
   padding: 10px 20px;
@@ -102,7 +102,7 @@ reduce card image to fit into the card
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border: 1px solid #e70c00;
+  border: 1px solid #2c8e79;
 }
 .price {
   font-size: 1.2rem;

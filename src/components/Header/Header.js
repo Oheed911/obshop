@@ -2,7 +2,7 @@
 
 import React from "react";
 import "./Header.css";
-import logo from "../../assets/logo_obshop.jpg";
+import logo from "../../assets/final_logo.webp";
 import {Link} from "react-router-dom";
 
 const Header = () => {
