@@ -92,6 +92,18 @@ function App() {
       return price;
     }))
     setMax(myprice);
+
+    //setting the minimum price
+    let min=Math.min(...data.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }) )
+    setMin(min);
     
   }
   let handleCheckBoxunclick = (checkVal) => {
