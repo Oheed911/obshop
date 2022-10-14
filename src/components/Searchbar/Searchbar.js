@@ -69,7 +69,7 @@ const Searchbar = (props) => {
         <div className="sl-container">
 
             <div className="searchbar-container">
-                <input type="text" value={inputValue} onChange={handleInput} placeholder="Search" onKeyPress={handleKeyPress} className="searchbar" />
+                <input type="text" value={inputValue} onChange={handleInput} placeholder="recherche..." onKeyPress={handleKeyPress} className="searchbar" />
     
                 <div id="search" className="searchbar-box" onClick={handleSubmit}>
                     <img src={searchIcon} alt="search-icon" className="search-icon" />

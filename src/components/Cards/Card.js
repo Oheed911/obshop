@@ -34,7 +34,7 @@ const Card = ({ title, description, image, link, price, seller, delivery, rating
                     <button className="price">{price}</button>
                     <div className="buy-button">
                         <a href={link} ><button className="card-link">
-                            Buy</button></a>
+                        acheter</button></a>
                     </div>
                 </div>
               

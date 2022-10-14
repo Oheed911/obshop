@@ -162,7 +162,7 @@ function App() {
         <div className="header-place">
           <Header />
         </div>
-        <h1 className="welcome-tag">Welcome on obshop, the best price comparator</h1>
+        <h1 className="welcome-tag">Bienvenue sur obshop, le meilleur comparateur de prix</h1>
         <div className="searchbar-placement">
           <Searchbar
             parentCallback={handleCallback}
@@ -191,9 +191,9 @@ function App() {
                 }
               />
               <div className="provider-filter">
-                <button className="filter-btn" onClick={handleClicked}>Set Filter</button>
+                <button className="filter-btn" onClick={handleClicked}>appliquer</button>
                 <hr />
-                <h3 className="Supp-title">Supplier</h3>
+                <h3 className="Supp-title">marchant</h3>
                 <div className="provider-filter-container">
                   <div className="provider-filter-item">
                     {
