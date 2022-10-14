@@ -44,13 +44,37 @@ function App() {
     //convert childData into json object
     setData(childData.data);
     settempData(childData.data);
+    let maxval= Math.max(...tempdata.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }))
+    setMax(maxval);
+
+    let minVal= Math.min(...tempdata.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }))   
+    setMin(minVal);
+
     setunique([]);
+    
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
     
   }
-  //filter the data after min or max is changed
+
+
   const handleClicked = () => {
     //filter data on basis of min and max
     //select only that that data whole data.price lies between min and max statue value
@@ -68,6 +92,30 @@ function App() {
       
     });
     setData(filteredData);
+     //setting the minimum price
+     let min=Math.min(...data.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      return price;
+    }) )
+    setMin(min);
+
+    console.log(filteredData);
+    let myprice=Math.max(...tempdata.map((item) => {
+      //remove curreny from price
+      let price = item.price.replace(/[^0-9]/g, '');
+      //remove commas from price
+      price = price.replace(/,/g, '');
+      //convert price into integer
+      price = parseFloat(price);
+      
+      return price;
+    }))
+    setMax(myprice);
   }
   let handleCheckBox = (checkVal) => {
     console.log(checkVal);
@@ -94,7 +142,7 @@ function App() {
     setMax(myprice);
 
     //setting the minimum price
-    let min=Math.min(...data.map((item) => {
+    let min=Math.min(...tempdata.map((item) => {
       //remove curreny from price
       let price = item.price.replace(/[^0-9]/g, '');
       //remove commas from price
@@ -102,7 +150,7 @@ function App() {
       //convert price into integer
       price = parseFloat(price);
       return price;
-    }) )
+    }))
     setMin(min);
     
   }
@@ -133,15 +181,17 @@ function App() {
           <div className="body-placement">
             <div className="filter-placement">
               <MultiRangeSlider
-                min={Math.min(...data.map((item) => {
-                  //remove curreny from price
-                  let price = item.price.replace(/[^0-9]/g, '');
-                  //remove commas from price
-                  price = price.replace(/,/g, '');
-                  //convert price into integer
-                  price = parseFloat(price);
-                  return price;
-                }) )}
+                min={//find min price from tempdata and setMin to that and also return value
+                  Math.min(...tempdata.map((item) => {
+                    //remove curreny from price
+                    let price = item.price.replace(/[^0-9]/g, '');
+                    //remove commas from price
+                    price = price.replace(/,/g, '');
+                    //convert price into integer
+                    price = parseFloat(price);
+                    return price;
+                  }))   
+              }
                 max={
                   Math.max(...tempdata.map((item) => {
                     //remove curreny from price
@@ -150,7 +200,6 @@ function App() {
                     price = price.replace(/,/g, '');
                     //convert price into integer
                     price = parseFloat(price);
-                    
                     return price;
                   }))
                 }
