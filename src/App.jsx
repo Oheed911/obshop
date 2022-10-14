@@ -39,6 +39,7 @@ function App() {
   const [max, setMax] = useState(0)
   const [tempmin, settempMin] = useState(0)
   const [tempmax, settempMax] = useState(0)
+  let [supplierFilter, setsupplierFilter] = useState([])
   //get searchResp
   const handleCallback = (childData) => {
 
@@ -67,7 +68,7 @@ function App() {
     settempMin(minu);
     settempMax(maxu);
     setunique([]);
-
+    //setsupplierFilter([]);
   }
   const handleloading = (childData) => {
     setLoading(childData.isLoading);
@@ -77,7 +78,6 @@ function App() {
     setMin(tempmin);
     setMax(tempmax);
   }, [tempmin, tempmax])
-
 
   const handleClicked = () => {
     //filter data on basis of min and max
@@ -119,43 +119,37 @@ function App() {
     }))
     setMax(myprice);
   }
-  let handleCheckBox = (checkVal) => {
-    //remove all values from data except checkVal
-    let filteredData = tempdata.filter((item) => {
-      if (item.source === checkVal) {
-        return item;
-      }
-      //
-    });
+  let handleCheckBox = () => {
+    //remove all values from data except the values in supplierFilter
+    let filteredData=null;
+      filteredData = tempdata.filter((item) => {
+        if (supplierFilter.includes(item.source)) {
+          return item;
+        }
+      })
+    
+    console.log(filteredData);
     //Check if data is empty or not
     setData(filteredData);
-    let myprice = Math.max(...tempdata.map((item) => {
-      //remove curreny from price
-      let price = item.price.replace(/[^0-9]/g, '');
-      //remove commas from price
-      price = price.replace(/,/g, '');
-      //convert price into integer
-      price = parseFloat(price);
-
-      return price;
-    }))
-    setMax(myprice);
-
-    //setting the minimum price
-    let min = Math.min(...tempdata.map((item) => {
-      //remove curreny from price
-      let price = item.price.replace(/[^0-9]/g, '');
-      //remove commas from price
-      price = price.replace(/,/g, '');
-      //convert price into integer
-      price = parseFloat(price);
-      return price;
-    }))
-    setMin(min);
-
   }
-  let handleCheckBoxunclick = (checkVal) => {
-    setData(tempdata);
+  let handleCheckBoxunclick = () => {
+    if(supplierFilter.length==0){
+      setData(tempdata);
+    }
+    else{
+      let filteredData = tempdata.filter((item) => {
+        if (supplierFilter.includes(item.source)) {
+          return item;
+        }
+        else{
+          return null;
+        }
+      })
+      console.log(filteredData);
+      //Check if data is empty or not
+      setData(filteredData);
+    }
+   
   }
 
 
@@ -217,10 +211,23 @@ function App() {
                                 const checked = e.target.checked;
 
                                 if (checked) {
+                                  if(!supplierFilter.includes(value)){
+                                    supplierFilter.push(value);
+                                  }
+                           
                                   handleCheckBox(value);
                                   //setunique([...unique, value])
                                 }
                                 else {
+                                  //Remove all the values from supplier filter that are not checked
+                                  console.log(supplierFilter);
+                                  supplierFilter = supplierFilter.filter((item) => {
+                                    if (item !== value) {
+                                      return item;
+                                    }
+                                  })
+                                  console.log("after",supplierFilter);
+                                  setsupplierFilter(supplierFilter);
                                   handleCheckBoxunclick();
                                 }
                               }
